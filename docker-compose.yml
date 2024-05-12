@@ -1,0 +1,27 @@
+version: '3.9'
+networks:
+    host:
+        name: host
+        external: true
+services:
+    app:
+        build:
+            dockerfile: Dockerfile.dev
+        command: /bin/sh -c "while sleep 1000; do :; done"
+        network_mode: "host"
+        ipc: "host"
+        volumes:
+            - .:/workspace:cached
+            - ~/.ssh:/root/.ssh
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+    # db:
+    #     image: postgres:14.1-alpine
+    #     restart: always
+    #     environment:
+    #         - POSTGRES_USER=postgres
+    #         - POSTGRES_PASSWORD=postgres
+    #     ports:
+    #         - 5432:5432
+    #     volumes:
+    #         - ./pgsql:/var/lib/postgresql/data

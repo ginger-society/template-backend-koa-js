@@ -1,0 +1,53 @@
+{
+	"env": {
+		"es2021": true
+	},
+	"extends": ["standard-with-typescript"],
+	"overrides": [
+		{
+			"files": ["app/*routes.ts"],
+			"plugins": ["jsdoc"],
+			"rules": {
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"jsdoc/no-missing-syntax": [
+					"warn",
+					{
+						"contexts": [
+							{
+								"comment": "JsdocBlock:has(JsdocTag[tag=swagger])",
+								"context": "any",
+								"message": "@swagger documentation is required on each API. Check this out for syntax info: https://github.com/jellydn/next-swagger-doc"
+							}
+						]
+					}
+				]
+			}
+		}
+	],
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"project": ["tsconfig.json"]
+	},
+	"rules": {
+		"no-console": "error",
+		"multiline-ternary": "off",
+		"indent": "off",
+		"no-tabs": "off",
+		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/no-misused-promises": [
+			"error",
+			{
+				"checksConditionals": false,
+				"checksVoidReturn": false
+			}
+		],
+		"@typescript-eslint/triple-slash-reference": "off",
+		"@next/next/no-server-import-in-page": "off",
+		"@typescript-eslint/valid-module": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/strict-boolean-expressions": "off",
+		"@typescript-eslint/restrict-template-expressions": "off",
+		"@typescript-eslint/no-var-requires": "off"
+	}
+}

@@ -1,0 +1,40 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": ["app"],
+    "includePattern": "\\.(js|ts)$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["plugins/markdown", "better-docs/typescript"],
+  "templates": {},
+  "opts": {
+    "template": "node_modules/clean-jsdoc-theme",
+    "destination": "docs",
+    "recurse": true,
+    "readme": "README.md",
+    "theme_opts": {
+      "homepageTitle": "Clean JSDoc Theme",
+      "includeFilesListInHomepage": true,
+      "default_theme": "dark",
+      "title": "KoaJS test",
+      "resizeable": {
+        "navbar": {
+          "min": "300",
+          "max": "600"
+        }
+      },
+      "menu": [
+        {
+          "title": "Website",
+          "link": "https://ankdev.me/clean-jsdoc-theme/dark/",
+          "target": "_blank",
+          "class": "some-class",
+          "id": "some-id"
+        }
+      ],
+      "footer": "This is footer"
+    }
+  }
+}
