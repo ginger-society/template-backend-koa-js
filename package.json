@@ -110,5 +110,5 @@
     "update-openapi-service": "openapi-generator-cli generate --generator-name typescript-fetch --additional-properties=typescriptThreePlus=true",
     "watch": "nodemon --watch 'app/**/*' -e ts --exec 'ts-node' -r tsconfig-paths/register ./app/app.ts"
   },
-  "version": "0.1.0-nightly.0"
+  "version": "0.2.0-nightly.0"
 }
