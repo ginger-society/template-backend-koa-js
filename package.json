@@ -105,5 +105,5 @@
     "test": "jest",
     "update-openapi-service": "openapi-generator-cli generate --generator-name typescript-fetch --additional-properties=typescriptThreePlus=true"
   },
-  "version": "0.3.0-nightly.0"
+  "version": "0.4.0-nightly.0"
 }
