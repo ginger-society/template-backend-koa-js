@@ -48,6 +48,7 @@ export const server = new Promise<ReturnType<typeof app.listen>>(
 		connection.connect().then(() => {
 			logger.info('DB connected')
 			cache.connect().then(() => {
+				logger.info('Redis connected')
 				resolve(app.listen(config.port))
 				logger.info(`Server running on port ${config.port}`)
 			})

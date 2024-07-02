@@ -1,4 +1,4 @@
-import models from '@/models/i_am_1'
+import models from '@/models'
 import { DataSource } from 'typeorm'
 
 const appDataSource = new DataSource({
@@ -7,7 +7,7 @@ const appDataSource = new DataSource({
 	port: 5432,
 	username: 'postgres',
 	password: 'postgres',
-	database: 'django',
+	database: 'Test-db',
 	synchronize: false,
 	logging: true,
 	entities: models,

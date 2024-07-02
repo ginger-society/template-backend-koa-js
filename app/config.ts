@@ -3,5 +3,5 @@ export interface IConfig {
 }
 
 export const config: IConfig = {
-	port: process.env.NODE_PORT ? parseInt(process.env.NODE_PORT) : 3000
+	port: process.env.NODE_PORT ? parseInt(process.env.NODE_PORT) : 3005
 }

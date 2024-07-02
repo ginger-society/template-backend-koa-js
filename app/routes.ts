@@ -1,10 +1,11 @@
 import { cache } from '@/app'
 import db from '@/db'
 import prom from '@/measure'
-import { choice_fieldEnum, TestEntity } from '@/models/i_am_1'
+// import { choice_fieldEnum, TestEntity } from '@/models/i_am_1'
 import { type Context } from 'koa'
 import Router from 'koa-router'
 import swaggerJsdoc from 'swagger-jsdoc'
+import { StudentEntity } from './models'
 import { djangoService } from './services'
 
 const router = new Router()
@@ -51,14 +52,20 @@ router.get('/healthcheck', async (ctx) => {
  *         description: if the jwt token is not present in the cookie or its invalid
  */
 const testHandler = async (ctx: Context) => {
-	const user: TestEntity = new TestEntity()
-	user.bool_field = false
-	user.char_field = 'ln'
-	user.positive_integer_field = 29
-	user.field3 = true
-	user.choice_field = choice_fieldEnum.choice1
+	// const user: TestEntity = new TestEntity()
+	const student = new StudentEntity()
+	student.address = 'address text'
+	student.father_name = 'A name'
+	student.has_cab_service = false
+	student.on_scholarship = true
+	student.name = 'SStudent'
+	// user.bool_field = false
+	// user.char_field = 'ln'
+	// user.positive_integer_field = 29
+	// user.field3 = true
+	// user.choice_field = choice_fieldEnum.choice1
 	todocounter.inc()
-	await db.save(user)
+	await db.save(student)
 	// Find the requested movie.
 	//   const movies = await userRepo.find();
 	ctx.body = {
