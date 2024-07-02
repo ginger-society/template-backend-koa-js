@@ -1,14 +1,20 @@
 import { cache } from '@/app'
 import db from '@/db'
 import prom from '@/measure'
+import fs from 'fs'
 // import { choice_fieldEnum, TestEntity } from '@/models/i_am_1'
 import { type Context } from 'koa'
 import Router from 'koa-router'
+import path from 'path'
 import swaggerJsdoc from 'swagger-jsdoc'
 import { StudentEntity } from './models'
 import { djangoService } from './services'
 
 const router = new Router()
+
+const schemas = JSON.parse(
+	fs.readFileSync(path.resolve(__dirname, 'models', 'schema.json'), 'utf8')
+)
 
 const options = {
 	definition: {
@@ -16,6 +22,11 @@ const options = {
 		info: {
 			title: 'Hello World',
 			version: '1.0.0'
+		},
+		components: {
+			schemas: {
+				...schemas.definitions
+			}
 		}
 	},
 	apis: ['./app/routes*.ts'] // files containing annotations as above
@@ -48,26 +59,25 @@ router.get('/healthcheck', async (ctx) => {
  *       200:
  *         description: returns current user object, should only be called
  *          once for a entire load or after sign in
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/StudentEntity'
  *       401:
  *         description: if the jwt token is not present in the cookie or its invalid
  */
 const testHandler = async (ctx: Context) => {
-	// const user: TestEntity = new TestEntity()
 	const student = new StudentEntity()
 	student.address = 'address text'
 	student.father_name = 'A name'
 	student.has_cab_service = false
 	student.on_scholarship = true
 	student.name = 'SStudent'
-	// user.bool_field = false
-	// user.char_field = 'ln'
-	// user.positive_integer_field = 29
-	// user.field3 = true
-	// user.choice_field = choice_fieldEnum.choice1
+	student.roll_number = '1023B'
+	student.created_at = new Date()
+	student.updated_at = '2024-07-02'
 	todocounter.inc()
 	await db.save(student)
-	// Find the requested movie.
-	//   const movies = await userRepo.find();
 	ctx.body = {
 		key: 'val'
 	}
