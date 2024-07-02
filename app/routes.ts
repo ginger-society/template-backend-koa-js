@@ -69,7 +69,7 @@ router.get('/healthcheck', async (ctx) => {
 const testHandler = async (ctx: Context) => {
 	const student = new StudentEntity()
 	student.address = 'address text'
-	student.father_name = 'A name'
+	student.father_name = 'Another name'
 	student.has_cab_service = false
 	student.on_scholarship = true
 	student.name = 'SStudent'
